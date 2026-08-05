@@ -13,18 +13,29 @@ export default function MenuFooter() {
   if (!showMenu) return null
 
   return (
-    <div className="mt-12 animate-fade-in-up text-center space-y-2 pt-8 border-t border-primary border-opacity-20">
-      <div className="space-y-2">
-        <p className="text-muted-foreground text-sm">
-          Expande tu conocimiento con enseñanzas bíblicas diarias
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Desarrollado por Fernando Gutiérrez
-        </p>
-        <p className="text-xs text-muted-foreground font-semibold">
-          Sistema de Efemérides Bíblicas v1.0
-        </p>
+    <footer className="mt-16 animate-fade-in-up py-12 border-t border-gray-200">
+      <div className="max-w-3xl mx-auto px-4 space-y-8">
+        {/* Main Content */}
+        <div className="text-center space-y-4">
+          <p className="text-lg text-foreground font-semibold leading-relaxed">
+            Expande tu conocimiento con enseñanzas bíblicas diarias
+          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+            <span>Desarrollado por</span>
+            <span className="font-semibold text-primary">Fernando Gutiérrez</span>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-30"></div>
+
+        {/* Version */}
+        <div className="text-center">
+          <p className="text-xs text-muted-foreground tracking-wider uppercase font-semibold">
+            Sistema de Efemérides Bíblicas v1.0
+          </p>
+        </div>
       </div>
-    </div>
+    </footer>
   )
 }

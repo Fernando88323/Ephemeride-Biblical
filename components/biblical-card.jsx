@@ -61,86 +61,84 @@ export default function BiblicalCard({ ephemeris }) {
   const year = ephemeris.display_date ? ephemeris.display_date.split('-')[0] : ''
 
   return (
-    <div className="w-full animate-fade-in-up">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
-          Enseñanza Bíblica del Día
-        </h1>
-        <p className="text-primary text-lg font-semibold">
+    <div className="w-full animate-fade-in-up space-y-8">
+      {/* Top Section */}
+      <div className="space-y-3">
+        <p className="text-primary font-semibold text-sm tracking-widest uppercase">
           {formatDisplayDate(ephemeris.display_date)}
         </p>
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
+          Efeméride Bíblica
+        </h1>
       </div>
 
-
-
-      {/* Main Card */}
-      <div className="bg-card rounded-xl border border-primary border-opacity-20 shadow-lg overflow-hidden animate-soft-glow biblical-glow">
-        {/* Date Indicator */}
-        <div className="bg-primary bg-opacity-10 border-b border-primary border-opacity-20 px-6 md:px-8 py-4">
-          <p className="text-primary font-semibold text-sm tracking-widest">
-            {year}
+      {/* Main Card - YouVersion Style */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        {/* Hero Section */}
+        <div className="bg-gradient-to-br from-primary to-secondary p-8 md:p-12 text-white space-y-4">
+          <p className="text-white text-opacity-90 text-sm font-semibold uppercase tracking-widest">
+            Año {year}
           </p>
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+            {ephemeris.historical_year ? (
+              <>
+                {ephemeris.historical_day} de {new Date(2024, ephemeris.historical_month - 1, ephemeris.historical_day).toLocaleDateString('es-ES', { month: 'long' })}
+                <br />
+                {ephemeris.historical_year}
+              </>
+            ) : (
+              'Reflexión Especial'
+            )}
+          </h2>
         </div>
 
-        {/* Content */}
-        <div className="px-6 md:px-8 py-8 space-y-6">
-          {/* Title Section */}
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
-              {ephemeris.historical_year ? (
-                <>
-                  {ephemeris.historical_day}{' '}
-                  <span className="text-primary">
-                    de {new Date(2024, ephemeris.historical_month - 1, ephemeris.historical_day).toLocaleDateString('es-ES', { month: 'long' })}
-                  </span>
-                  {' '}de {ephemeris.historical_year}
-                </>
-              ) : (
-                'Reflexión del día'
-              )}
-            </h2>
-          </div>
-
-          {/* Event Text */}
-          <div className="bg-background rounded-lg p-6 border border-primary border-opacity-20">
-            <p className="text-foreground leading-relaxed text-lg min-h-24">
+        {/* Content Section */}
+        <div className="px-8 md:px-12 py-10 md:py-14 space-y-8">
+          {/* Main Text */}
+          <div className="space-y-4">
+            <p className="text-xl md:text-2xl leading-relaxed text-foreground font-medium">
               {eventText}
               {!allTextShown && (
-                <span className="animate-pulse">|</span>
+                <span className="inline-block ml-1 w-1 h-8 bg-primary animate-pulse"></span>
               )}
             </p>
           </div>
 
-          {/* Share Button */}
+          {/* Action Buttons */}
           {allTextShown && (
-            <div className="flex justify-center pt-4">
+            <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200">
               <button
                 onClick={handleShare}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-opacity-90 rounded-lg transition-all duration-300 hover:shadow-lg font-semibold"
+                className="flex items-center gap-2 px-8 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg active:scale-95"
               >
-                <Share2 size={18} />
-                Compartir efeméride
+                <Share2 size={20} />
+                Compartir
+              </button>
+              <button
+                className="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                Guardar
               </button>
             </div>
           )}
         </div>
-
-        {/* Footer Accent */}
-        <div className="h-1 bg-primary opacity-30"></div>
       </div>
 
-      {/* Decorative Elements */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-      `}</style>
+      {/* Stats Section */}
+      <div className="grid grid-cols-3 gap-4 pt-4">
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+          <p className="text-primary font-bold text-2xl">{year}</p>
+          <p className="text-muted-foreground text-sm mt-2">Año</p>
+        </div>
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+          <p className="text-primary font-bold text-2xl">{ephemeris.historical_day || '--'}</p>
+          <p className="text-muted-foreground text-sm mt-2">Día</p>
+        </div>
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+          <p className="text-primary font-bold text-2xl">{ephemeris.historical_month || '--'}</p>
+          <p className="text-muted-foreground text-sm mt-2">Mes</p>
+        </div>
+      </div>
     </div>
   )
 }

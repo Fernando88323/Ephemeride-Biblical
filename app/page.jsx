@@ -39,25 +39,13 @@ export default function Page() {
 
   if (isLoading) {
     return (
-      <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="gradient-orb" style={{
-            width: '400px',
-            height: '400px',
-            top: '-100px',
-            right: '-100px'
-          }} />
-          <div className="gradient-orb" style={{
-            width: '300px',
-            height: '300px',
-            bottom: '-100px',
-            left: '-100px'
-          }} />
-        </div>
-        <div className="text-center animate-fade-in-up">
-          <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-foreground">Cargando efeméride...</h2>
-          <p className="text-muted-foreground mt-2">Conectando con la sabiduría bíblica</p>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div className="text-center animate-fade-in-up space-y-6">
+          <div className="w-16 h-16 rounded-full border-4 border-primary border-t-transparent animate-spin mx-auto"></div>
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold text-foreground">Cargando efeméride</h2>
+            <p className="text-lg text-muted-foreground">Conectando con la sabiduría bíblica</p>
+          </div>
         </div>
       </main>
     )
@@ -65,18 +53,16 @@ export default function Page() {
 
   if (error) {
     return (
-      <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="gradient-orb" style={{
-            width: '400px',
-            height: '400px',
-            top: '-100px',
-            right: '-100px'
-          }} />
-        </div>
-        <div className="w-full max-w-2xl bg-card rounded-lg border border-primary border-opacity-20 p-8 text-center animate-fade-in-up">
-          <h2 className="text-2xl font-bold text-foreground mb-4">Algo salió mal</h2>
-          <p className="text-muted-foreground">{error}</p>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div className="w-full max-w-2xl bg-red-50 rounded-2xl border border-red-200 p-12 text-center animate-fade-in-up space-y-4">
+          <h2 className="text-3xl font-bold text-foreground">Algo salió mal</h2>
+          <p className="text-muted-foreground text-lg">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-6 px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-secondary transition-colors"
+          >
+            Intentar de nuevo
+          </button>
         </div>
       </main>
     )
@@ -84,42 +70,36 @@ export default function Page() {
 
   if (!ephemeris) {
     return (
-      <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="gradient-orb" style={{
-            width: '400px',
-            height: '400px',
-            top: '-100px',
-            right: '-100px'
-          }} />
-        </div>
-        <div className="w-full max-w-2xl bg-card rounded-lg border border-primary border-opacity-20 p-8 text-center animate-fade-in-up">
-          <h2 className="text-2xl font-bold text-foreground mb-4">Sin datos hoy</h2>
-          <p className="text-muted-foreground">No hay una efeméride disponible para esta fecha. Vuelve mañana.</p>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div className="w-full max-w-2xl bg-card rounded-2xl border border-gray-200 p-12 text-center animate-fade-in-up space-y-4">
+          <h2 className="text-3xl font-bold text-foreground">Sin datos hoy</h2>
+          <p className="text-muted-foreground text-lg">No hay una efeméride disponible para esta fecha. Vuelve mañana para descubrir más.</p>
         </div>
       </main>
     )
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center px-4 py-8 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="gradient-orb" style={{
-          width: '400px',
-          height: '400px',
-          top: '-100px',
-          right: '-100px'
-        }} />
-        <div className="gradient-orb" style={{
-          width: '300px',
-          height: '300px',
-          bottom: '-100px',
-          left: '-100px'
-        }} />
+    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex flex-col">
+      {/* Header */}
+      <div className="border-b border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 md:px-8 py-6 md:py-8">
+          <div className="space-y-1">
+            <p className="text-primary font-semibold text-sm tracking-widest uppercase">Sistema de Efemérides</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">Biblia Diaria</h1>
+          </div>
+        </div>
       </div>
-      
-      <div className="w-full max-w-3xl relative z-10 space-y-8">
-        <BiblicalCard ephemeris={ephemeris} />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col items-center justify-start px-4 md:px-8 py-10 md:py-14">
+        <div className="w-full max-w-4xl">
+          <BiblicalCard ephemeris={ephemeris} />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex-shrink-0">
         <MenuFooter />
       </div>
     </main>
