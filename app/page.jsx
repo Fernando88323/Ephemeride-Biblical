@@ -74,7 +74,7 @@ export default function Page() {
             right: '-100px'
           }} />
         </div>
-        <div className="w-full max-w-2xl bg-card rounded-lg border border-border p-8 text-center animate-fade-in-up">
+        <div className="w-full max-w-2xl bg-card rounded-lg border border-primary border-opacity-20 p-8 text-center animate-fade-in-up">
           <h2 className="text-2xl font-bold text-foreground mb-4">Algo salió mal</h2>
           <p className="text-muted-foreground">{error}</p>
         </div>
@@ -93,7 +93,7 @@ export default function Page() {
             right: '-100px'
           }} />
         </div>
-        <div className="w-full max-w-2xl bg-card rounded-lg border border-border p-8 text-center animate-fade-in-up">
+        <div className="w-full max-w-2xl bg-card rounded-lg border border-primary border-opacity-20 p-8 text-center animate-fade-in-up">
           <h2 className="text-2xl font-bold text-foreground mb-4">Sin datos hoy</h2>
           <p className="text-muted-foreground">No hay una efeméride disponible para esta fecha. Vuelve mañana.</p>
         </div>

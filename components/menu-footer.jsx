@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Heart } from 'lucide-react'
 
 export default function MenuFooter() {
   const [showMenu, setShowMenu] = useState(false)
@@ -14,23 +13,17 @@ export default function MenuFooter() {
   if (!showMenu) return null
 
   return (
-    <div className="mt-12 animate-fade-in-up text-center space-y-4 pt-8 border-t border-border border-opacity-50">
-      <div className="space-y-3">
+    <div className="mt-12 animate-fade-in-up text-center space-y-2 pt-8 border-t border-primary border-opacity-20">
+      <div className="space-y-2">
         <p className="text-muted-foreground text-sm">
           Expande tu conocimiento con enseñanzas bíblicas diarias
         </p>
-        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <span>© 2025 Enseñanzas Bíblicas</span>
-        </div>
-        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <span>Desarrollado por</span>
-          <span className="text-primary font-semibold">Fernando Gutiérrez</span>
-        </div>
-        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <span>Con</span>
-          <Heart size={14} className="text-primary fill-primary" />
-          <span>para la comunidad</span>
-        </div>
+        <p className="text-xs text-muted-foreground">
+          Desarrollado por Fernando Gutiérrez
+        </p>
+        <p className="text-xs text-muted-foreground font-semibold">
+          Sistema de Efemérides Bíblicas v1.0
+        </p>
       </div>
     </div>
   )

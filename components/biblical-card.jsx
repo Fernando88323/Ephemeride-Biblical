@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { Share2 } from 'lucide-react'
-import Image from 'next/image'
 
 function formatDisplayDate(displayDate) {
   if (!displayDate) return ''
@@ -73,39 +72,10 @@ export default function BiblicalCard({ ephemeris }) {
         </p>
       </div>
 
-      {/* Images Grid */}
-      <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">
-        <div className="rounded-lg overflow-hidden border-2 border-primary border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
-          <Image
-            src="/biblical-1.png"
-            alt="Biblia sagrada"
-            width={300}
-            height={300}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="rounded-lg overflow-hidden border-2 border-secondary border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
-          <Image
-            src="/biblical-2.png"
-            alt="Cruz sagrada"
-            width={300}
-            height={300}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="rounded-lg overflow-hidden border-2 border-accent border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
-          <Image
-            src="/biblical-3.png"
-            alt="Manos rezando"
-            width={300}
-            height={300}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
+
 
       {/* Main Card */}
-      <div className="bg-card rounded-xl border border-border shadow-lg overflow-hidden animate-soft-glow biblical-glow">
+      <div className="bg-card rounded-xl border border-primary border-opacity-20 shadow-lg overflow-hidden animate-soft-glow biblical-glow">
         {/* Date Indicator */}
         <div className="bg-primary bg-opacity-10 border-b border-primary border-opacity-20 px-6 md:px-8 py-4">
           <p className="text-primary font-semibold text-sm tracking-widest">
@@ -133,7 +103,7 @@ export default function BiblicalCard({ ephemeris }) {
           </div>
 
           {/* Event Text */}
-          <div className="bg-background rounded-lg p-6 border border-border border-opacity-50">
+          <div className="bg-background rounded-lg p-6 border border-primary border-opacity-20">
             <p className="text-foreground leading-relaxed text-lg min-h-24">
               {eventText}
               {!allTextShown && (
