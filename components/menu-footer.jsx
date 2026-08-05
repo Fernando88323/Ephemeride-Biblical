@@ -20,18 +20,18 @@ export default function MenuFooter() {
           <p className="text-lg text-foreground font-semibold leading-relaxed">
             Expande tu conocimiento con enseñanzas bíblicas diarias
           </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-foreground">
             <span>Desarrollado por</span>
             <span className="font-semibold text-primary">Fernando Gutiérrez</span>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-30"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-40"></div>
 
         {/* Version */}
         <div className="text-center">
-          <p className="text-xs text-muted-foreground tracking-wider uppercase font-semibold">
+          <p className="text-xs text-foreground tracking-wider uppercase font-semibold opacity-70">
             Sistema de Efemérides Bíblicas v1.0
           </p>
         </div>

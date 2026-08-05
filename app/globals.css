@@ -103,9 +103,9 @@
   --card-foreground: #1a1a2e;
   --popover: #ffffff;
   --popover-foreground: #1a1a2e;
-  --primary: #5b21b6;
+  --primary: #7c3aed;
   --primary-foreground: #ffffff;
-  --secondary: #7c3aed;
+  --secondary: #a78bfa;
   --secondary-foreground: #ffffff;
   --muted: #94a3b8;
   --muted-foreground: #64748b;
@@ -114,12 +114,12 @@
   --destructive: #ef4444;
   --border: #e5e7eb;
   --input: #f3f4f6;
-  --ring: #5b21b6;
-  --chart-1: #5b21b6;
-  --chart-2: #7c3aed;
-  --chart-3: #a855f7;
-  --chart-4: #d946ef;
-  --chart-5: #f43f5e;
+  --ring: #7c3aed;
+  --chart-1: #7c3aed;
+  --chart-2: #a78bfa;
+  --chart-3: #c4b5fd;
+  --chart-4: #ddd6fe;
+  --chart-5: #f3e8ff;
   --radius: 1.25rem;
 }
 
@@ -131,9 +131,9 @@
   --card-foreground: #1a1a2e;
   --popover: #ffffff;
   --popover-foreground: #1a1a2e;
-  --primary: #5b21b6;
+  --primary: #7c3aed;
   --primary-foreground: #ffffff;
-  --secondary: #7c3aed;
+  --secondary: #a78bfa;
   --secondary-foreground: #ffffff;
   --muted: #94a3b8;
   --muted-foreground: #64748b;
@@ -142,12 +142,12 @@
   --destructive: #ef4444;
   --border: #e5e7eb;
   --input: #f3f4f6;
-  --ring: #5b21b6;
-  --chart-1: #5b21b6;
-  --chart-2: #7c3aed;
-  --chart-3: #a855f7;
-  --chart-4: #d946ef;
-  --chart-5: #f43f5e;
+  --ring: #7c3aed;
+  --chart-1: #7c3aed;
+  --chart-2: #a78bfa;
+  --chart-3: #c4b5fd;
+  --chart-4: #ddd6fe;
+  --chart-5: #f3e8ff;
 }
 
 @media (prefers-color-scheme: light) {
@@ -159,9 +159,9 @@
     --card-foreground: #1a1a2e;
     --popover: #ffffff;
     --popover-foreground: #1a1a2e;
-    --primary: #5b21b6;
+    --primary: #7c3aed;
     --primary-foreground: #ffffff;
-    --secondary: #7c3aed;
+    --secondary: #a78bfa;
     --secondary-foreground: #ffffff;
     --muted: #94a3b8;
     --muted-foreground: #64748b;
@@ -170,12 +170,12 @@
     --destructive: #ef4444;
     --border: #e5e7eb;
     --input: #f3f4f6;
-    --ring: #5b21b6;
-    --chart-1: #5b21b6;
-    --chart-2: #7c3aed;
-    --chart-3: #a855f7;
-    --chart-4: #d946ef;
-    --chart-5: #f43f5e;
+    --ring: #7c3aed;
+    --chart-1: #7c3aed;
+    --chart-2: #a78bfa;
+    --chart-3: #c4b5fd;
+    --chart-4: #ddd6fe;
+    --chart-5: #f3e8ff;
   }
 }
 

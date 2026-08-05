@@ -115,7 +115,7 @@ export default function BiblicalCard({ ephemeris }) {
                 Compartir
               </button>
               <button
-                className="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300"
+                className="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 active:scale-95"
               >
                 Guardar
               </button>
@@ -126,17 +126,17 @@ export default function BiblicalCard({ ephemeris }) {
 
       {/* Stats Section */}
       <div className="grid grid-cols-3 gap-4 pt-4">
-        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200 hover:border-primary hover:shadow-md transition-all">
           <p className="text-primary font-bold text-2xl">{year}</p>
-          <p className="text-muted-foreground text-sm mt-2">Año</p>
+          <p className="text-foreground text-sm mt-2 font-medium">Año</p>
         </div>
-        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200 hover:border-primary hover:shadow-md transition-all">
           <p className="text-primary font-bold text-2xl">{ephemeris.historical_day || '--'}</p>
-          <p className="text-muted-foreground text-sm mt-2">Día</p>
+          <p className="text-foreground text-sm mt-2 font-medium">Día</p>
         </div>
-        <div className="bg-card rounded-xl p-6 text-center border border-gray-200">
+        <div className="bg-card rounded-xl p-6 text-center border border-gray-200 hover:border-primary hover:shadow-md transition-all">
           <p className="text-primary font-bold text-2xl">{ephemeris.historical_month || '--'}</p>
-          <p className="text-muted-foreground text-sm mt-2">Mes</p>
+          <p className="text-foreground text-sm mt-2 font-medium">Mes</p>
         </div>
       </div>
     </div>
