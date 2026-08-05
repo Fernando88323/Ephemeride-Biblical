@@ -6,30 +6,30 @@ export default function MenuFooter() {
   const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowMenu(true), 3000)
+    const timer = setTimeout(() => setShowMenu(true), 5000)
     return () => clearTimeout(timer)
   }, [])
 
   if (!showMenu) return null
 
   return (
-    <div className="mt-8 animate-fade-in space-y-2 border-t border-terminal-green border-opacity-30 pt-6 text-center text-xs">
-      <div className="text-terminal-amber">
+    <div className="mt-8 animate-fade-in space-y-3 border-t border-terminal-green border-opacity-30 pt-6 text-center">
+      <div className="text-terminal-green text-xs opacity-70">
         {'═'.repeat(50)}
       </div>
-      <div className="grid grid-cols-2 gap-4 text-terminal-green">
-        <div className="rounded border border-terminal-green border-opacity-30 p-2">
-          <div className="text-terminal-amber">[F5]</div>
-          <div className="text-xs">Recargar página</div>
+      
+      <div className="space-y-2 text-xs">
+        <div className="text-terminal-green opacity-75">
+          <span className="text-terminal-amber">$</span> Pulsa Ctrl+W para salir
         </div>
-        <div className="rounded border border-terminal-green border-opacity-30 p-2">
-          <div className="text-terminal-blue">[ESPACIO]</div>
-          <div className="text-xs">Siguiente verso</div>
+        <div className="text-terminal-green opacity-60 text-xs">
+          © 2025 <span className="text-terminal-amber">MoureDev</span> by Brais Moure
+        </div>
+        <div className="text-terminal-green opacity-60 text-xs">
+          Desarrollado con <span className="text-terminal-amber">❤</span> desde Galicia para el mundo
         </div>
       </div>
-      <div className="mt-4 text-terminal-green opacity-50">
-        Sistema de Efemérides Bíblicas v1.0
-      </div>
+
       <style jsx>{`
         @keyframes fadeIn {
           from {
