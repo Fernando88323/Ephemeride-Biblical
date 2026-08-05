@@ -1,8 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
-import { Courier_Prime } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import './globals.css'
 
-const courierPrime = Courier_Prime({ weight: '400', subsets: ['latin'] })
+const lora = Lora({ subsets: ['latin'], variable: '--font-serif' })
 
 export const metadata = {
   title: 'Efeméride Bíblica',
@@ -36,8 +36,8 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className="dark">
-      <body className={`${courierPrime.className} antialiased bg-terminal-dark text-terminal-green`}>
+    <html lang="es" className={`dark ${lora.variable}`}>
+      <body className="antialiased bg-background text-foreground">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

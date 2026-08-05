@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { getTodayEphemeris } from '@/lib/ephemerides'
-import TerminalDisplay from '@/components/terminal-display'
+import BiblicalCard from '@/components/biblical-card'
 import MenuFooter from '@/components/menu-footer'
 
 export default function Page() {
@@ -40,14 +40,24 @@ export default function Page() {
   if (isLoading) {
     return (
       <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="fixed inset-0 -z-10" style={{
-          background: 'linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(15, 15, 15, 0) 25%, rgba(0, 212, 255, 0.03) 50%, rgba(15, 15, 15, 0) 75%, rgba(0, 255, 0, 0.05) 100%)',
-          backgroundSize: '200% 200%',
-          animation: 'gradientFlow 15s ease infinite'
-        }} />
-        <div className="text-terminal-green terminal-glow-strong text-center">
-          <p className="text-lg">$ CARGANDO EFEMÉRIDE...</p>
-          <div className="mt-4 inline-block animate-blink">_</div>
+        <div className="absolute inset-0 -z-10">
+          <div className="gradient-orb" style={{
+            width: '400px',
+            height: '400px',
+            top: '-100px',
+            right: '-100px'
+          }} />
+          <div className="gradient-orb" style={{
+            width: '300px',
+            height: '300px',
+            bottom: '-100px',
+            left: '-100px'
+          }} />
+        </div>
+        <div className="text-center animate-fade-in-up">
+          <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin mx-auto mb-4"></div>
+          <h2 className="text-xl font-semibold text-foreground">Cargando efeméride...</h2>
+          <p className="text-muted-foreground mt-2">Conectando con la sabiduría bíblica</p>
         </div>
       </main>
     )
@@ -56,14 +66,17 @@ export default function Page() {
   if (error) {
     return (
       <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="fixed inset-0 -z-10" style={{
-          background: 'linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(15, 15, 15, 0) 25%, rgba(0, 212, 255, 0.03) 50%, rgba(15, 15, 15, 0) 75%, rgba(0, 255, 0, 0.05) 100%)',
-          backgroundSize: '200% 200%',
-          animation: 'gradientFlow 15s ease infinite'
-        }} />
-        <div className="w-full max-w-2xl border-2 border-terminal-green bg-terminal-dark/95 p-6 text-terminal-green terminal-glow">
-          <div className="text-terminal-amber">$ ERROR AL LEER SUPABASE</div>
-          <div className="mt-4 text-sm">{error}</div>
+        <div className="absolute inset-0 -z-10">
+          <div className="gradient-orb" style={{
+            width: '400px',
+            height: '400px',
+            top: '-100px',
+            right: '-100px'
+          }} />
+        </div>
+        <div className="w-full max-w-2xl bg-card rounded-lg border border-border p-8 text-center animate-fade-in-up">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Algo salió mal</h2>
+          <p className="text-muted-foreground">{error}</p>
         </div>
       </main>
     )
@@ -72,14 +85,17 @@ export default function Page() {
   if (!ephemeris) {
     return (
       <main className="relative flex min-h-screen flex-col items-center justify-center px-4 overflow-hidden">
-        <div className="fixed inset-0 -z-10" style={{
-          background: 'linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(15, 15, 15, 0) 25%, rgba(0, 212, 255, 0.03) 50%, rgba(15, 15, 15, 0) 75%, rgba(0, 255, 0, 0.05) 100%)',
-          backgroundSize: '200% 200%',
-          animation: 'gradientFlow 15s ease infinite'
-        }} />
-        <div className="w-full max-w-2xl border-2 border-terminal-green bg-terminal-dark/95 p-6 text-terminal-green terminal-glow">
-          <div className="text-terminal-amber">$ NO HAY EFEMÉRIDE PARA HOY</div>
-          <div className="mt-4 text-sm">Aún no existe un registro en Supabase para la fecha actual.</div>
+        <div className="absolute inset-0 -z-10">
+          <div className="gradient-orb" style={{
+            width: '400px',
+            height: '400px',
+            top: '-100px',
+            right: '-100px'
+          }} />
+        </div>
+        <div className="w-full max-w-2xl bg-card rounded-lg border border-border p-8 text-center animate-fade-in-up">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Sin datos hoy</h2>
+          <p className="text-muted-foreground">No hay una efeméride disponible para esta fecha. Vuelve mañana.</p>
         </div>
       </main>
     )
@@ -87,30 +103,25 @@ export default function Page() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center px-4 py-8 overflow-hidden">
-      <div className="fixed inset-0 -z-10" style={{
-        background: 'linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(15, 15, 15, 0) 25%, rgba(0, 212, 255, 0.03) 50%, rgba(15, 15, 15, 0) 75%, rgba(0, 255, 0, 0.05) 100%)',
-        backgroundSize: '200% 200%',
-        animation: 'gradientFlow 15s ease infinite'
-      }} />
+      <div className="absolute inset-0 -z-10">
+        <div className="gradient-orb" style={{
+          width: '400px',
+          height: '400px',
+          top: '-100px',
+          right: '-100px'
+        }} />
+        <div className="gradient-orb" style={{
+          width: '300px',
+          height: '300px',
+          bottom: '-100px',
+          left: '-100px'
+        }} />
+      </div>
       
-      <div className="w-full max-w-2xl relative z-10">
-        <TerminalDisplay ephemeris={ephemeris} />
+      <div className="w-full max-w-3xl relative z-10 space-y-8">
+        <BiblicalCard ephemeris={ephemeris} />
         <MenuFooter />
       </div>
-
-      <style jsx>{`
-        @keyframes gradientFlow {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
     </main>
   )
 }
