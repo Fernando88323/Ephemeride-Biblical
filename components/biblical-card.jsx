@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Share2, Zap } from 'lucide-react'
+import { Share2 } from 'lucide-react'
+import Image from 'next/image'
 
 function formatDisplayDate(displayDate) {
   if (!displayDate) return ''
@@ -64,15 +65,43 @@ export default function BiblicalCard({ ephemeris }) {
     <div className="w-full animate-fade-in-up">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-block mb-4">
-          <Zap className="w-8 h-8 text-primary animate-pulse" />
-        </div>
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
-          Efeméride Bíblica
+          Enseñanza Bíblica del Día
         </h1>
-        <p className="text-primary text-lg">
+        <p className="text-primary text-lg font-semibold">
           {formatDisplayDate(ephemeris.display_date)}
         </p>
+      </div>
+
+      {/* Images Grid */}
+      <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">
+        <div className="rounded-lg overflow-hidden border-2 border-primary border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
+          <Image
+            src="/biblical-1.png"
+            alt="Biblia sagrada"
+            width={300}
+            height={300}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-lg overflow-hidden border-2 border-secondary border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
+          <Image
+            src="/biblical-2.png"
+            alt="Cruz sagrada"
+            width={300}
+            height={300}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-lg overflow-hidden border-2 border-accent border-opacity-30 h-32 md:h-40 bg-background flex items-center justify-center">
+          <Image
+            src="/biblical-3.png"
+            alt="Manos rezando"
+            width={300}
+            height={300}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Main Card */}
@@ -128,7 +157,7 @@ export default function BiblicalCard({ ephemeris }) {
         </div>
 
         {/* Footer Accent */}
-        <div className="h-1 bg-gradient-to-r from-primary via-secondary to-transparent opacity-50"></div>
+        <div className="h-1 bg-primary opacity-30"></div>
       </div>
 
       {/* Decorative Elements */}

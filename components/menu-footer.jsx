@@ -17,24 +17,19 @@ export default function MenuFooter() {
     <div className="mt-12 animate-fade-in-up text-center space-y-4 pt-8 border-t border-border border-opacity-50">
       <div className="space-y-3">
         <p className="text-muted-foreground text-sm">
-          Descubre la historia de la programación a través de eventos históricos
+          Expande tu conocimiento con enseñanzas bíblicas diarias
         </p>
-        <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-          <span>© 2025</span>
-          <a 
-            href="https://mouredev.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-primary hover:underline font-semibold"
-          >
-            MoureDev
-          </a>
-          <span>by Brais Moure</span>
+        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+          <span>© 2025 Enseñanzas Bíblicas</span>
         </div>
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <span>Desarrollado con</span>
+          <span>Desarrollado por</span>
+          <span className="text-primary font-semibold">Fernando Gutiérrez</span>
+        </div>
+        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+          <span>Con</span>
           <Heart size={14} className="text-primary fill-primary" />
-          <span>desde Galicia para el mundo</span>
+          <span>para la comunidad</span>
         </div>
       </div>
     </div>

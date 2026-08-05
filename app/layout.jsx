@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import { Lora } from 'next/font/google'
+import Clock from '@/components/clock'
 import './globals.css'
 
 const lora = Lora({ subsets: ['latin'], variable: '--font-serif' })
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`dark ${lora.variable}`}>
       <body className="antialiased bg-background text-foreground">
+        <Clock />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
