@@ -12,6 +12,9 @@ type EphemerisRecord = {
   historical_day: number | null
   historical_month: number | null
   historical_year: number | null
+  bible_reference: string | null
+  verse_text: string | null
+  application: string | null
 }
 
 function getEnv(name: string): string {
@@ -63,13 +66,16 @@ function getDisplayDate(input?: string) {
 
 function buildPrompt(displayDate: string) {
   return [
-    `Genera una efeméride bíblica en español para la fecha ${displayDate}.`,
+    `Genera un devocional bíblico diario en español para la fecha ${displayDate}.`,
     'Devuelve SOLO JSON válido y sin markdown con estas claves exactas:',
-    '{"event":"...","historical_day":null,"historical_month":null,"historical_year":null}',
-    'Reglas:',
-    '- event: un solo párrafo, tono bíblico e histórico, entre 2 y 4 frases.',
-    '- historical_day, historical_month, historical_year deben ir en null si no hay una fecha histórica concreta.',
-    '- No agregues campos extra.',
+    '{"event":"...","bible_reference":"...","verse_text":"...","application":"...","historical_day":null,"historical_month":null,"historical_year":null}',
+    'Estructura del devocional:',
+    '- event: un solo párrafo (2-4 frases) que presente un hecho, personaje o enseñanza bíblica relacionada con el día. Tono reverente, claro y cercano.',
+    '- bible_reference: la cita bíblica en formato "Libro Capítulo:Versículo" (por ejemplo, "Proverbios 16:18"). Debe ser un versículo real y coherente con el evento.',
+    '- verse_text: el texto exacto del versículo citado en español.',
+    '- application: un solo párrafo (2-4 frases) que invite al lector a aplicar esa enseñanza en su vida diaria, trabajo, familia o decisiones personales.',
+    '- historical_day, historical_month, historical_year: números enteros si el evento ocurrió en una fecha histórica concreta; de lo contrario, null.',
+    '- No agregues campos extra ni comentarios.',
   ].join(' ')
 }
 
@@ -96,7 +102,22 @@ function validateRecord(input: unknown, displayDate: string): EphemerisRecord {
     throw new Error('Groq response is missing "event".')
   }
 
+  if (typeof record.bible_reference !== 'string' || !record.bible_reference.trim()) {
+    throw new Error('Groq response is missing "bible_reference".')
+  }
+
+  if (typeof record.verse_text !== 'string' || !record.verse_text.trim()) {
+    throw new Error('Groq response is missing "verse_text".')
+  }
+
+  if (typeof record.application !== 'string' || !record.application.trim()) {
+    throw new Error('Groq response is missing "application".')
+  }
+
   const parts = getMexicoCityDateParts(new Date(`${displayDate}T12:00:00`))
+
+  const toNullableNumber = (value: unknown) =>
+    value === null || typeof value === 'undefined' ? null : Number(value)
 
   return {
     display_date: displayDate,
@@ -104,18 +125,12 @@ function validateRecord(input: unknown, displayDate: string): EphemerisRecord {
     month: parts.month,
     year: parts.year,
     event: record.event.trim(),
-    historical_day:
-      record.historical_day === null || typeof record.historical_day === 'undefined'
-        ? null
-        : Number(record.historical_day),
-    historical_month:
-      record.historical_month === null || typeof record.historical_month === 'undefined'
-        ? null
-        : Number(record.historical_month),
-    historical_year:
-      record.historical_year === null || typeof record.historical_year === 'undefined'
-        ? null
-        : Number(record.historical_year),
+    historical_day: toNullableNumber(record.historical_day),
+    historical_month: toNullableNumber(record.historical_month),
+    historical_year: toNullableNumber(record.historical_year),
+    bible_reference: record.bible_reference.trim(),
+    verse_text: record.verse_text.trim(),
+    application: record.application.trim(),
   }
 }
 
@@ -135,7 +150,7 @@ async function generateWithGroq(displayDate: string): Promise<EphemerisRecord> {
         {
           role: 'system',
           content:
-            'Eres un redactor de efemérides bíblicas. Responde en JSON estricto y contenido reverente.',
+            'Eres un redactor de devocionales bíblicos diarios. Responde únicamente en JSON estricto. Incluye siempre una cita bíblica real con su versículo completo y una aplicación práctica para la vida diaria. El tono debe ser reverente, cercano y útil.',
         },
         {
           role: 'user',
@@ -170,10 +185,13 @@ function generateFallback(displayDate: string): EphemerisRecord {
     day: parts.day,
     month: parts.month,
     year: parts.year,
-    event: `Efemeride de respaldo para ${parts.day}/${parts.month}/${parts.year}: un dia de reflexion biblica y esperanza. (fallback tras error en Groq)`,
+    event: `Devocional de respaldo para ${parts.day}/${parts.month}/${parts.year}: un día de reflexión bíblica y esperanza. (fallback tras error en Groq)`,
     historical_day: null,
     historical_month: null,
     historical_year: null,
+    bible_reference: 'Salmos 119:105',
+    verse_text: 'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.',
+    application: 'Hoy podemos pedirle a Dios que su Palabra ilumine nuestras decisiones y nos guíe por el camino correcto.',
   }
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle, Share2 } from "lucide-react";
+import { BookOpen, MessageCircle, Share2 } from "lucide-react";
 
 // funcion para formatear la fecha de visualización
 function formatDisplayDate(displayDate) {
@@ -71,14 +71,29 @@ export default function BiblicalCard({ ephemeris }) {
         setAllTextShown(true);
         clearInterval(eventTimer);
       }
-    }, 20);
+    }, 12);
 
     return () => clearInterval(eventTimer);
   }, [ephemeris]);
 
+  const shareableText = () => {
+    const lines = [
+      `*Efeméride Bíblica - ${formatDisplayDate(ephemeris.display_date)}*`,
+      "",
+      ephemeris.event,
+      "",
+      `📖 ${ephemeris.bible_reference}`,
+      `"${ephemeris.verse_text}"`,
+      "",
+      `🙏 Aplicación:`,
+      ephemeris.application,
+    ].filter(Boolean);
+    return lines.join("\n");
+  };
+
   // Función para manejar la acción de compartir
   const handleShare = () => {
-    const text = `${ephemeris.event}\n\nEfeméride Bíblica - ${formatDisplayDate(ephemeris.display_date)}`;
+    const text = shareableText();
     if (navigator.share) {
       navigator.share({
         title: "Efeméride Bíblica",
@@ -91,7 +106,7 @@ export default function BiblicalCard({ ephemeris }) {
 
   // Función para manejar la acción de compartir en WhatsApp
   const handleWhatsAppShare = () => {
-    const text = `${ephemeris.event}\n\nEfeméride Bíblica - ${formatDisplayDate(ephemeris.display_date)}`;
+    const text = shareableText();
     const pageUrl = window.location.href;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${text}\n\n${pageUrl}`)}`;
 
@@ -157,6 +172,36 @@ export default function BiblicalCard({ ephemeris }) {
             </p>
           </div>
 
+          {ephemeris.bible_reference && (
+            <div className="animate-fade-in-up space-y-6">
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6 space-y-3">
+                <div className="flex items-center gap-2 text-primary">
+                  <BookOpen size={18} />
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em]">
+                    Cita bíblica
+                  </p>
+                </div>
+                <p className="text-lg sm:text-xl font-bold text-foreground">
+                  {ephemeris.bible_reference}
+                </p>
+                <p className="text-base sm:text-lg italic leading-relaxed text-foreground/85">
+                  &ldquo;{ephemeris.verse_text}&rdquo;
+                </p>
+              </div>
+
+              {ephemeris.application && (
+                <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    Aplicación para hoy
+                  </p>
+                  <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
+                    {ephemeris.application}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
           {allTextShown && (
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center md:justify-end gap-3 sm:gap-4 pt-6 border-t border-border">
               <button
@@ -173,13 +218,6 @@ export default function BiblicalCard({ ephemeris }) {
               >
                 <MessageCircle size={20} />
                 WhatsApp
-              </button> */}
-              {/*               <button
-                onClick={handleWhatsAppStatusShare}
-                className="flex w-full sm:w-auto items-center justify-center border-2 border-primary gap-2 px-6 sm:px-8 py-3 text-primary font-semibold rounded-xl hover:bg-secondary hover:shadow-lg transition-all duration-300 active:scale-95"
-              >
-                <MessageCircle size={20} />
-                Estado de WhatsApp
               </button> */}
             </div>
           )}
