@@ -115,15 +115,15 @@ export default function BiblicalCard({ ephemeris }) {
   return (
     <div className="w-full max-w-3xl mx-auto animate-fade-in-up space-y-6 md:space-y-7">
       <div className="space-y-3 text-center md:text-left">
-        {/*         <h1 className="text-3xl sm:text-4xl md:text-[2.85rem] font-bold text-foreground leading-tight">
+        {/* <h1 className="text-3xl sm:text-4xl md:text-[2.85rem] font-bold text-foreground leading-tight">
           Efeméride Bíblica
         </h1> */}
-        <p className="border border-primary rounded-2xl p-4 text-primary font-semibold text-sm tracking-widest">
+        {/*  <p className="border border-primary rounded-2xl p-4 text-primary font-semibold text-sm tracking-widest">
           <span>
             <strong>Fecha actual: </strong>
           </span>
           {formatDisplayDate(ephemeris.display_date)}
-        </p>
+        </p> */}
       </div>
 
       <div className="bg-card rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-border">
@@ -142,12 +142,9 @@ export default function BiblicalCard({ ephemeris }) {
               "Efeméride del día"
             )}
           </h2>
-          {/*           <p className="text-primary font-semibold text-sm tracking-widest uppercase">
-            <span>
-              <strong>Fecha actual: </strong>
-            </span>
+          <p className="text-primary font-semibold text-sm tracking-widest">
             {formatDisplayDate(ephemeris.display_date)}
-          </p> */}
+          </p>
         </div>
 
         <div className="px-5 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 space-y-7">
@@ -169,22 +166,20 @@ export default function BiblicalCard({ ephemeris }) {
                 <Share2 size={20} />
                 Compartir
               </button>
-              <button
+              {/* Buton de compartir directamente en whatsapp */}
+              {/* <button
                 onClick={handleWhatsAppShare}
                 className="flex w-full sm:w-auto items-center justify-center border-2 border-primary gap-2 px-6 sm:px-8 py-3 text-primary font-semibold rounded-xl hover:bg-secondary hover:shadow-lg transition-all duration-300 active:scale-95"
               >
                 <MessageCircle size={20} />
                 WhatsApp
-              </button>
+              </button> */}
               {/*               <button
                 onClick={handleWhatsAppStatusShare}
                 className="flex w-full sm:w-auto items-center justify-center border-2 border-primary gap-2 px-6 sm:px-8 py-3 text-primary font-semibold rounded-xl hover:bg-secondary hover:shadow-lg transition-all duration-300 active:scale-95"
               >
                 <MessageCircle size={20} />
                 Estado de WhatsApp
-              </button> */}
-              {/*    <button className="w-full sm:w-auto px-6 sm:px-8 py-3 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-secondary hover:shadow-lg transition-all duration-300 active:scale-95">
-                Guardar
               </button> */}
             </div>
           )}
@@ -203,22 +198,22 @@ export default function BiblicalCard({ ephemeris }) {
       </div> */}
 
       {/* Stats Section */}
-      {/*       <div className="grid grid-cols-3 gap-4 pt-4">
-        <div className="bg-card rounded-xl p-6 text-center border border-border hover:border-primary hover:shadow-md transition-all">
-          <p className="text-primary font-bold text-2xl">{year}</p>
-          <p className="text-foreground text-sm mt-2 font-medium">Año</p>
-        </div>
+      {/* <div className="grid grid-cols-3 gap-4 pt-4">
         <div className="bg-card rounded-xl p-6 text-center border border-border hover:border-primary hover:shadow-md transition-all">
           <p className="text-primary font-bold text-2xl">
-            {ephemeris.historical_day || "--"}
+            {ephemeris.day || "--"}
           </p>
           <p className="text-foreground text-sm mt-2 font-medium">Día</p>
         </div>
         <div className="bg-card rounded-xl p-6 text-center border border-border hover:border-primary hover:shadow-md transition-all">
           <p className="text-primary font-bold text-2xl">
-            {ephemeris.historical_month || "--"}
+            {ephemeris.month || "--"}
           </p>
           <p className="text-foreground text-sm mt-2 font-medium">Mes</p>
+        </div>
+        <div className="bg-card rounded-xl p-6 text-center border border-border hover:border-primary hover:shadow-md transition-all">
+          <p className="text-primary font-bold text-2xl">{year}</p>
+          <p className="text-foreground text-sm mt-2 font-medium">Año</p>
         </div>
       </div> */}
     </div>
