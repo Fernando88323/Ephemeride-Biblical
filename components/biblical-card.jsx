@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BookOpen, MessageCircle, Share2 } from "lucide-react";
+import { BookOpen, MessageCircle, Share2, CircleCheckBig } from "lucide-react";
 
 // funcion para formatear la fecha de visualización
 function formatDisplayDate(displayDate) {
@@ -142,29 +142,31 @@ export default function BiblicalCard({ ephemeris }) {
       </div>
 
       <div className="bg-card rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-border">
-        <div className="bg-gradient-to-br from-primary to-secondary p-6 sm:p-8 md:p-10 text-primary-foreground space-y-4 text-center md:text-left">
-          {/*        <p className="text-primary-foreground/90 text-sm font-semibold uppercase tracking-widest">
-            Año {year}
-          </p> */}
-          <h2 className="text-2xl sm:text-3xl md:text-[2rem] font-bold leading-tight">
-            {ephemeris.historical_year ? (
-              <>
-                {ephemeris.historical_day} de {historicalMonthName}
-                <br />
-                {ephemeris.historical_year}
-              </>
-            ) : (
-              "Efeméride del día"
-            )}
-          </h2>
-          <p className="text-primary font-semibold text-sm tracking-widest">
-            {formatDisplayDate(ephemeris.display_date)}
-          </p>
+        <div className="bg-gradient-to-br from-primary to-secondary p-6 sm:p-8 md:p-10 text-primary-foreground">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-center md:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4">
+              <BookOpen size={32} className="shrink-0 opacity-90" />
+              <h2 className="text-2xl sm:text-3xl md:text-[2rem] font-bold leading-tight">
+                {ephemeris.historical_year ? (
+                  <>
+                    {ephemeris.historical_day} de {historicalMonthName}
+                    <br />
+                    {ephemeris.historical_year}
+                  </>
+                ) : (
+                  "Devocional Diario"
+                )}
+              </h2>
+            </div>
+            <p className="text-primary-foreground/90 font-semibold text-sm tracking-widest shrink-0">
+              {formatDisplayDate(ephemeris.display_date)}
+            </p>
+          </div>
         </div>
 
         <div className="px-5 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 space-y-7">
           <div className="space-y-4">
-            <p className="mx-auto max-w-2xl text-justify md:text-justify text-lg sm:text-xl md:text-[1.35rem] leading-relaxed text-foreground font-medium">
+            <p className="mx-auto max-w-2xl text-left text-lg sm:text-xl md:text-[1.35rem] leading-relaxed text-foreground font-medium">
               {eventText}
               {!allTextShown && (
                 <span className="inline-block ml-1 w-1 h-8 bg-primary animate-pulse"></span>
@@ -184,17 +186,20 @@ export default function BiblicalCard({ ephemeris }) {
                 <p className="text-lg sm:text-xl font-bold text-foreground">
                   {ephemeris.bible_reference}
                 </p>
-                <p className="text-base sm:text-lg italic leading-relaxed text-foreground/85">
+                <p className="text-base text-left sm:text-lg italic leading-relaxed text-foreground/85">
                   &ldquo;{ephemeris.verse_text}&rdquo;
                 </p>
               </div>
 
               {ephemeris.application && (
                 <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                    Aplicación para hoy
-                  </p>
-                  <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
+                  <div className="flex items-center gap-2 text-primary">
+                    <CircleCheckBig size={18} />
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      Aplicación para hoy
+                    </p>
+                  </div>
+                  <p className="text-base text-left sm:text-lg leading-relaxed text-foreground/90">
                     {ephemeris.application}
                   </p>
                 </div>

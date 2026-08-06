@@ -48,7 +48,7 @@ export default function Page() {
           <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-4 border-primary border-t-transparent animate-spin mx-auto"></div>
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Cargando efeméride
+              Cargando devocional diario...
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               Conectando con la sabiduría bíblica
@@ -88,7 +88,7 @@ export default function Page() {
             Sin datos hoy
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            No hay una efeméride disponible para esta fecha. Vuelve mañana para
+            No hay un devocional disponible para esta fecha. Vuelve mañana para
             descubrir más.
           </p>
         </div>
@@ -103,11 +103,8 @@ export default function Page() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-7">
           <div className="space-y-3 text-center md:text-left">
             <p className="text-primary font-semibold text-sm tracking-widest uppercase">
-              Sistema de Efemérides
+              Sistema de Devocionales Diarios
             </p>
-            {/* <h1 className="text-3xl sm:text-[2rem] font-bold text-foreground">
-              Biblia Diaria
-            </h1> */}
             {/*             <p className="mx-auto max-w-xl text-sm sm:text-base text-muted-foreground leading-relaxed md:mx-0">
               Una lectura diaria clara y centrada para descubrir cada efeméride
               bíblica con comodidad desde el móvil.
