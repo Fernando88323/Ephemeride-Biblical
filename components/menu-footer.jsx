@@ -97,7 +97,10 @@ export default function MenuFooter() {
         {/* Version */}
         <div className="text-center">
           <p className="text-xs text-foreground tracking-wider uppercase font-semibold opacity-70">
-            Sistema de Efemérides Bíblicas v1.0
+            Sistema de Devocionales Diarios v1.0
+          </p>
+          <p className="text-xs text-foreground tracking-wider uppercase font-semibold opacity-70">
+            @2026 Copyright. Todos los derechos reservados.
           </p>
         </div>
       </div>
