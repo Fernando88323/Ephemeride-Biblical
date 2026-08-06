@@ -166,7 +166,7 @@ export default function BiblicalCard({ ephemeris }) {
 
         <div className="px-5 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 space-y-7">
           <div className="space-y-4">
-            <p className="mx-auto max-w-2xl text-left text-lg sm:text-xl md:text-[1.35rem] leading-relaxed text-foreground font-medium">
+            <p className="mx-auto max-w-2xl text-justify hyphens-auto text-lg sm:text-xl md:text-[1.35rem] leading-relaxed text-foreground font-medium">
               {eventText}
               {!allTextShown && (
                 <span className="inline-block ml-1 w-1 h-8 bg-primary animate-pulse"></span>
@@ -186,7 +186,7 @@ export default function BiblicalCard({ ephemeris }) {
                 <p className="text-lg sm:text-xl font-bold text-foreground">
                   {ephemeris.bible_reference}
                 </p>
-                <p className="text-base text-left sm:text-lg italic leading-relaxed text-foreground/85">
+                <p className="text-base text-justify hyphens-auto sm:text-lg italic leading-relaxed text-foreground/85">
                   &ldquo;{ephemeris.verse_text}&rdquo;
                 </p>
               </div>
@@ -199,7 +199,7 @@ export default function BiblicalCard({ ephemeris }) {
                       Aplicación para hoy
                     </p>
                   </div>
-                  <p className="text-base text-left sm:text-lg leading-relaxed text-foreground/90">
+                  <p className="text-base text-justify hyphens-auto sm:text-lg leading-relaxed text-foreground/90">
                     {ephemeris.application}
                   </p>
                 </div>
